@@ -1,0 +1,13 @@
+Package: locationtestplotr
+Type: Package
+Title: Plot Kruskal-Wallis/ Moods-Mediantest/ Jonckheere Terpstra and oneway 
+  ANOVA beta and power curves
+Version: 0.1.0
+Author: Carsten Stahl
+Maintainer: carstenstahl307@yahoo.com
+Description: This package makes plotting beta- and powercurves for various location tests for 
+  the k independent samples problem easy and uncomplicated. It lets you play with
+  key parameters to explore the performance of these tests in differnt szenarios.
+License: MIT
+Encoding: UTF-8
+LazyData: true
