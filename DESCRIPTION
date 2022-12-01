@@ -8,6 +8,9 @@ Maintainer: carstenstahl307@yahoo.com
 Description: This package makes plotting beta- and powercurves for various location tests for 
   the k independent samples problem easy and uncomplicated. It lets you play with
   key parameters to explore the performance of these tests in differnt szenarios.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
