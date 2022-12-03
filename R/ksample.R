@@ -10,7 +10,7 @@
 #'
 #' @examples ksample(3, c(rnorm, rnorm, function(n) {return(rnorm(n, 0,2))})),  ksample(2, c(rnorm, rnorm))
 #' @export
-ksamples <- function(k, randfuncs, size="random") {
+generate_ksamples <- function(k, randfuncs, size="random") {
   ## function config ###########################################################
   # sample sizes
   sample_s_lower_border <- 0
@@ -55,33 +55,13 @@ ksamples <- function(k, randfuncs, size="random") {
     }
   }
 
-  ## special cases #############################################################
-  if (k == 1) {
-    tryCatch(
-      expr = {
-        if(size == "random") {
-          return(randfunc(random_sizes(1)[1]))
-        }
-        else {
-          return(randfunc(size[1]))
-        }
-      },
-      error = function(e) {
-        message("error:\n", e)
-      },
-      warning = function(w) {
-        message("warning:\n", w)
-      }
-    )
-  }
-
   ## normal routine ############################################################
   random_sample_size <- size == "random"
 
   result <- data.frame(value=NULL, sample=NULL)
   sample_cat <- factor(1:k)
   i <- 1
-  if (random_sample_size) {
+  if (random_sample_size[1]) {
     size <- random_sizes(k)
   }
   tryCatch(
