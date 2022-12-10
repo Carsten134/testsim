@@ -20,5 +20,5 @@ a dataframe with columns "value" (realized observation) and "sample" (sample (1 
 ksamples generates independent samples based on given densities.
 }
 \examples{
-ksample(3, c(rnorm, rnorm, function(n) {return(rnorm(n, 0,2))})),  ksample(2, c(rnorm, rnorm))
+generate_ksamples(2, c(rnorm, rnorm))
 }

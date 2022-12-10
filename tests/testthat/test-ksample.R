@@ -1,4 +1,3 @@
-devtools::load_all()
 
 testthat::test_that("generates sample with normal density with k = 1", {
     set.seed(1)
