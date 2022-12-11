@@ -1,7 +1,7 @@
 
 #' simulating k samples based on given densities
 #' @description ksamples generates independent samples based on given densities.
-#' @param k an integer: how many samples should be simulated
+#'
 #' @param randfuncs a vector of functions with length k: the densities for the samples
 #' @param size a vector of integers with length k: the list of sample-sizes
 #'
@@ -10,11 +10,11 @@
 #'
 #' @examples generate_ksamples(2, c(rnorm, rnorm))
 #' @export
-generate_ksamples <- function(k, randfuncs, size="random") {
+generate_ksamples <- function(randfuncs, size="random") {
   ## function config ###########################################################
   # sample sizes
-  sample_s_lower_border <- 0
-  sample_s_upper_border <- 100
+  sample_s_lower_border <- 6
+  sample_s_upper_border <- 120
   random_sizes <- function(x) {
     return(as.integer(
         runif(
@@ -26,27 +26,18 @@ generate_ksamples <- function(k, randfuncs, size="random") {
     )
   }
   ## validate the input #######################################################
-  # check k
-  if (k < 1) {
-    stop("k must be at least one")
-  }
-  if (!is.numeric(k)) {
-    stop("k is not a number")
-  }
-  if(!is.integer(k)) {
-    k_int <- as.integer(k)
-  }
+  k_int <- length(randfuncs)
   # check size
   if(size[1] != "random") {
     if(!is.numeric(size)) {
       stop("size must be either random or a vector of numerics")
     }
-    else if (length(size)!= k) {
+    else if (length(size)!= k_int) {
       stop("size_vector must have legth of k ")
     }
   }
   # check randfunc
-  if(length(randfuncs) != k) {
+  if(length(randfuncs) != k_int) {
     stop("randfunc has not length of k")
   }
   for (i in randfuncs) {
@@ -57,9 +48,7 @@ generate_ksamples <- function(k, randfuncs, size="random") {
 
   ## normal routine ############################################################
   random_sample_size <- size == "random"
-  if (!exists("k_int")) {
-    k_int <- k
-  }
+
   result <- data.frame(value=NULL, sample=NULL)
   sample_cat <- factor(1:k_int)
   i <- 1
@@ -71,7 +60,7 @@ generate_ksamples <- function(k, randfuncs, size="random") {
       for (rand in randfuncs) {
         values <- rand(size[i])
         samples <- rep(sample_cat[i], size[i])
-        result <- rbind(result, data.frame(value=values, sample=samples))
+        result <- rbind(result, data.frame(value=values, s_cat=samples))
         i = i+1
       }
 

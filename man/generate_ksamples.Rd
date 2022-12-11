@@ -4,11 +4,9 @@
 \alias{generate_ksamples}
 \title{simulating k samples based on given densities}
 \usage{
-generate_ksamples(k, randfuncs, size = "random")
+generate_ksamples(randfuncs, size = "random")
 }
 \arguments{
-\item{k}{an integer: how many samples should be simulated}
-
 \item{randfuncs}{a vector of functions with length k: the densities for the samples}
 
 \item{size}{a vector of integers with length k: the list of sample-sizes}
