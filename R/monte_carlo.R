@@ -20,7 +20,7 @@ monte_carlo <- function(eval, n) {
   absolute_r <- data %>%
     dplyr::count(value)
 
-  relative_r <- sapply(reduce$n,
+  relative_r <- sapply(absolute_r$n,
                   function(val) {
                     return(val/n)
                   })
