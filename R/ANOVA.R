@@ -26,29 +26,26 @@ anova <- function(data, alpha) {
 
   mean_vals <- data %>%
     dplyr::group_by(s_cat) %>%
-    dplyr::summarize(s_cat=s_cat,
-                     mean_vals=mean(value)) %>%
-    dplyr::distinct(s_cat, mean_vals)
+    dplyr::summarize(mean_vals=mean(value)) %>%
+    dplyr::select(mean_vals)
 
   sample_size <- data %>% dplyr::count(s_cat)
 
-  processed_data <- dplyr::inner_join(mean_vals,
-                                      sample_size,
-                                      by="s_cat")
+  processed_data <- cbind(sample_size, mean_vals)
 
-  k <- length(mean_vals$s_cat)
+  k <- length(processed_data$s_cat)
 
   sum_outer <- 0
   sum_inner <- 0
 
+  curr <- 1
   for(i in 1:k) {
     n_i <- processed_data$n[i]
     mu_i <- processed_data$mean_vals[i]
     sum_outer <- sum_outer + n_i*(mu_i - mean)^2
-    vals <- data %>%
-      dplyr::filter(s_cat == i) %>%
-      dplyr::select(value)
-    for(val in vals$value) {
+    vals <- data$value[curr:(curr + n_i - 1)]
+    curr <- curr + n_i
+    for(val in vals) {
       sum_inner <- sum_inner + (val - mu_i)^2
     }
   }
