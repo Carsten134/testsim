@@ -33,7 +33,7 @@ generate_ksamples <- function(randfuncs, size="random") {
       stop("size must be either random or a vector of numerics")
     }
     else if (length(size)!= k_int) {
-      stop("size_vector must have legth of k ")
+      stop("size_vector must have length of rand_funcs")
     }
   }
   # check randfunc
