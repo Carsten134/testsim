@@ -1,4 +1,4 @@
-Package: locationtestplotr
+Package: testsim
 Type: Package
 Title: Plot Kruskal-Wallis/ Moods-Mediantest/ Jonckheere Terpstra and oneway 
   ANOVA beta and power curves
