@@ -1,6 +1,6 @@
 # testsim Documentation
 Testsim makes simulating data very easy and fast. It also comes with builtin statistical tests and a function for monte-carlo simulations.
-## installation
+## Installation
 Install the package via the git repository (requiring the devtools package):
 ````R
 devtools::install_github("Carsten134/testsim")
@@ -15,7 +15,7 @@ Then launch a R-session in the created dir testsim and run:
 ````R
 devtools:install()
 ````
-## usage in a nutshell
+## Usage in a nutshell
 To generate samples, first generate densities. You can choose between normal, uniform and cauchy destributions:
 ````R
 params <- data.frame(mean = 1:10, var=rep(1,10))
