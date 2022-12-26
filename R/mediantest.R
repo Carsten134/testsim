@@ -62,6 +62,8 @@ mood_test <- function(data, alpha) {
   if (approx) {
     crit_val <- qchisq(alpha, k-1,
                        lower.tail = F)
+  } else {
+
   }
 
   # check for H_0

@@ -27,16 +27,18 @@ jonckheere_terpstra <- function(data, alpha, order) {
   ## normal routine ############################################################
   test_stat <- 0
   n <- c()
-  for (i in as.factor(order)) {
+  order_fac <- as.factor(order)
+  for (i in 1:length(order)) {
     group_i <- data %>%
-      dplyr::filter(s_cat == i)
+      dplyr::filter(s_cat == order_fac[i])
 
     n <- append(n, length(group_i))
-    for (j in as.factor(order[i:length(order)])) {
+
+    for (j in as.factor(order[(i+1):length(order)])) {
       group_j <- data %>%
         dplyr::filter(s_cat == j)
       for (xij in group_i$value) {
-        test_stat <- sum(group_j$value < xij)
+        test_stat <- test_stat + sum(group_j$value < xij)
       }
     }
   }
