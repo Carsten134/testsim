@@ -13,7 +13,7 @@ git clone https://github.com/Carsten134/testsim
 ````
 Then launch a R-session in the created dir testsim and run:
 ````R
-devtools:install()
+devtools::install()
 ````
 ## Usage in a nutshell
 To generate samples, first generate densities. You can choose between normal, uniform and cauchy destributions:
