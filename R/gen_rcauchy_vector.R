@@ -11,7 +11,7 @@ gen_rcauchy_vector <- function(params) {
   result <- c()
   for(i in 1:length(params$location)) {
     location <- params$location[i]
-    scale <- params$location[i]
+    scale <- params$scale[i]
     result <- append(result, gen_fixed_rcauchy(location, scale))
   }
   return(result)

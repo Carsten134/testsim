@@ -13,7 +13,7 @@
 generate_ksamples <- function(randfuncs, size="random") {
   ## function config ###########################################################
   # sample sizes
-  sample_s_lower_border <- 6
+  sample_s_lower_border <- 9
   sample_s_upper_border <- 120
   random_sizes <- function(x) {
     return(as.integer(
